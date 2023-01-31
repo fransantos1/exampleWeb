@@ -1,0 +1,26 @@
+{
+  "name": "exampleweb",
+  "version": "1.0.0",
+  "description": "Example of Web programming application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fransantos1/exampleWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fransantos1/exampleWeb/issues"
+  },
+  "homepage": "https://github.com/fransantos1/exampleWeb#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
