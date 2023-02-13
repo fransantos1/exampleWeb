@@ -7,7 +7,7 @@ const pool = require("../config/database");
                   dbObj.crd_max_usage, dbObj.crd_type);    
           }
           class Card {
-              constructor(id,name,url,lore,description, level, 
+            constructor(id,name,url,lore,description, level, 
                           cost, timeout, maxUsage, type) {
                   this.id = id;
                   this.name = name;
@@ -20,8 +20,8 @@ const pool = require("../config/database");
                   this.maxUsage = maxUsage;
                   this.type = type;
               }
-          
-              static async getAll() {
+
+            static async getAll() {
                   try {
                       let result = [];
                       let [dbCards,fields] = await pool.query("Select * from cards");
@@ -33,7 +33,21 @@ const pool = require("../config/database");
                       console.log(err);
                       return {status: 500, result: err };
                   }
-              }          
-          }
-          
+            }
+            static async getById(id) {
+                try {
+                    let [dbCards,fields] = 
+                        await pool.query("Select * from cards where crd_id=?",[id]);
+                    if (!dbCards.length)
+                        return {status:404, result: {msg: "No card found with that identifier"}};
+                    let dbCard = dbCards[0];
+                    let result = cardFromDB(dbCard);
+                    return {status: 200, result: result};
+                } catch (err) {
+                    console.log(err);
+                    return {status: 500, result: err };
+                }
+            }
+        }
+
           module.exports = Card;
