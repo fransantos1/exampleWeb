@@ -1,9 +1,5 @@
-create database mydb;
-
-use mydb;
-
 create table cards (
-    crd_id int not null auto_increment,
+    crd_id serial,
     crd_name varchar(60) not null,
     crd_img_url varchar(200), -- what if we have more than one image?
     crd_lore varchar(400),
